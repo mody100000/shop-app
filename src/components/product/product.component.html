@@ -1,0 +1,38 @@
+<div class="row">
+  @for(item of productListFilter; track item.id){
+
+  <div
+    appBoxShadow
+    class="col-sm-3 mb-4 mt-4 d-flex flex-column align-items-center"
+    [routerLink]="['/product', item.id]"
+    routerLinkActive="router-link-active"
+  >
+    @if(!item.isPurshased){
+    <img [src]="item.img" class="img" />
+    } @else{
+    <div>
+      <h2>Thanks for purchasing from our Store {{ clientName }}</h2>
+    </div>
+    }
+    <h3>{{ item.name }}</h3>
+    <h4>{{ item.price }}</h4>
+    <h2 [style.backgroundColor]="item.quantity === 1 ? 'yellow' : 'gray'">
+      {{ item.quantity }}
+    </h2>
+    <h2>
+      @switch(item.quantity) {@case(1){ last one item }@case(2){ last tow item
+      }@case(0){ out of stock }@default{ in stock } }
+    </h2>
+    <h2>{{ birthDay | date : "short" }}</h2>
+    <h4>creditCard: {{ creditCard | formatCredit : "-" }}</h4>
+    <button
+      class="btn btn-primary btn-lg"
+      [disabled]="item.quantity == 0"
+      (click)="toggleBtn(item.id)"
+      (click)="addToCart(item)"
+    >
+      Buy
+    </button>
+  </div>
+  }
+</div>

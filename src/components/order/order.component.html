@@ -1,0 +1,27 @@
+<div class="row">
+  @for(item of products; track item.id){
+  <div
+    appBoxShadow
+    class="col-sm-4 mb-5 mt-5 d-flex flex-column align-items-center"
+    routerLinkActive="router-link-active"
+  >
+    <h3>{{ item.name }}</h3>
+    <h4>{{ item.price }}</h4>
+    <h4>{{ item.category }}</h4>
+    <div class="d-flex flex-row align-items-center">
+      <button class="btn btn-danger mx-4" (click)="deleteProd(item.id)">
+        Delete
+      </button>
+      <button class="btn btn-primary">
+        <a
+          [queryParams]="{ updateMode: true }"
+          [routerLink]="['/prods', item.id]"
+          class="text-white"
+        >
+          Update
+        </a>
+      </button>
+    </div>
+  </div>
+  }
+</div>

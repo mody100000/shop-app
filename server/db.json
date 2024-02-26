@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "prod1",
+      "price": 24,
+      "category": "test"
+    },
+    {
+      "id": "2",
+      "name": "testProd",
+      "price": 25,
+      "category": "testCat"
+    },
+    {
+      "id": "4555",
+      "name": "test product",
+      "price": 255,
+      "category": "watches"
+    },
+    {
+      "id": "f60d",
+      "name": "Cedar-Grey Blazer",
+      "price": 9000,
+      "category": "shoes"
+    },
+    {
+      "id": "2",
+      "name": "testProds",
+      "price": 25,
+      "category": "testCat"
+    },
+    {
+      "id": "c5fa",
+      "name": "hellosss",
+      "price": 243,
+      "category": "perfume"
+    },
+    {
+      "id": "d43f",
+      "name": "lol",
+      "price": 23,
+      "category": "watches"
+    }
+  ],
+  "users": [
+    {
+      "id": "0c76",
+      "fullName": "mody2",
+      "email": "mody@email.com",
+      "mobileNumbers": ["01144907171"],
+      "address": {
+        "city": "lol",
+        "postalCode": "sad",
+        "street": "sadaf"
+      },
+      "password": "123456"
+    }
+  ]
+}

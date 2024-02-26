@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/products"
+            >Products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">about</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+            >Contact Us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/inserproduct">admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/prods">new products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order">order</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">register</a>
+        </li>
+        <li class="nav-item mr-5">
+          <button class="btn btn-primary h-7" (click)="changeUserState()">
+            {{ userLog ? "Logout" : "Login" }}
+          </button>
+        </li>
+      </ul>
+      <button class="btn btn-primary">
+        <a class="nav-link h-2" routerLink="/wish">wish list</a>
+      </button>
+    </div>
+  </div>
+</nav>

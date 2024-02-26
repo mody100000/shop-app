@@ -1,0 +1,171 @@
+<form
+  class="container mt-3 bg-light mb-3"
+  [formGroup]="userForm"
+  (ngSubmit)="addUser()"
+>
+  <div class="mb-3">
+    <label for="fullName" class="form-label">Full Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="fullName"
+      formControlName="fullName"
+      [ngClass]="{
+        'is-invalid':
+          fullName?.invalid && (fullName?.touched || fullName?.dirty)
+      }"
+    />
+    <div class="invalid-feedback">
+      <ng-container *ngIf="fullName?.hasError('required')"
+        >Full Name is required</ng-container
+      >
+      <ng-container *ngIf="fullName?.hasError('minlength')"
+        >Full Name should be at least 5 characters</ng-container
+      >
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+      [ngClass]="{
+        'is-invalid': email?.invalid && (email?.touched || email?.dirty)
+      }"
+    />
+    <div class="invalid-feedback">
+      <ng-container *ngIf="email?.hasError('required')"
+        >Email is required</ng-container
+      >
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      [ngClass]="{
+        'is-invalid':
+          password?.invalid && (password?.touched || password?.dirty)
+      }"
+    />
+    <div class="invalid-feedback">
+      <ng-container *ngIf="password?.hasError('required')"
+        >Password is required</ng-container
+      >
+      <ng-container *ngIf="password?.hasError('minlength')"
+        >Password should be at least 6 characters</ng-container
+      >
+    </div>
+  </div>
+
+  <div formArrayName="mobileNumbers" class="mb-3">
+    <div *ngFor="let mobileNumber of mobileNumbers.controls; let i = index">
+      <label for="mobileNumber{{ i }}" class="form-label">Mobile Number</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="mobileNumber{{ i }}"
+          [formControlName]="i"
+          [ngClass]="{
+            'is-invalid':
+              mobileNumber?.invalid &&
+              (mobileNumber?.touched || mobileNumber?.dirty)
+          }"
+        />
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeMobileNumber(i)"
+          *ngIf="i > 0"
+        >
+          Remove
+        </button>
+      </div>
+      <div class="invalid-feedback">
+        <ng-container *ngIf="mobileNumber?.hasError('required')"
+          >Mobile Number is required</ng-container
+        >
+        <ng-container *ngIf="mobileNumber?.hasError('pattern')"
+          >Enter a valid Phone Number</ng-container
+        >
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary mb-5 text-center"
+    (click)="addMobileNumber()"
+  >
+    Add Another Mobile
+  </button>
+
+  <div formGroupName="address" class="mb-3">
+    <h3>Address</h3>
+
+    <div class="mb-3">
+      <label for="city" class="form-label">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        formControlName="city"
+        [ngClass]="{
+          'is-invalid': city?.invalid && (city?.touched || city?.dirty)
+        }"
+      />
+      <div class="invalid-feedback">
+        <ng-container *ngIf="city?.hasError('required')"
+          >City is required</ng-container
+        >
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="postalCode" class="form-label">Postal Code</label>
+      <input
+        type="text"
+        class="form-control"
+        id="postalCode"
+        formControlName="postalCode"
+        [ngClass]="{
+          'is-invalid':
+            postalCode?.invalid && (postalCode?.touched || postalCode?.dirty)
+        }"
+      />
+      <div class="invalid-feedback">
+        <ng-container *ngIf="postalCode?.hasError('required')"
+          >Postal code is required</ng-container
+        >
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="street" class="form-label">Street</label>
+      <input
+        type="text"
+        class="form-control"
+        id="street"
+        formControlName="street"
+        [ngClass]="{
+          'is-invalid': street?.invalid && (street?.touched || street?.dirty)
+        }"
+      />
+      <div class="invalid-feedback">
+        <ng-container *ngIf="street?.hasError('required')"
+          >Street is required</ng-container
+        >
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-success" type="submit">Submit</button>
+</form>

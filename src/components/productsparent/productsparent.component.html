@@ -1,0 +1,43 @@
+<select
+  id="search"
+  class="form-control mt-5 mb-4 w-50 m-auto"
+  [(ngModel)]="listFilterdValue"
+>
+  <option selected value="All">All products</option>
+  <option value="1">shoeses</option>
+  <option value="2">watches</option>
+  <option value="3">perfume</option>
+</select>
+
+<div class="row">
+  <app-product
+    [listFilterdValue]="listFilterdValue"
+    (addchildEvent)="getCartItem($event)"
+  ></app-product>
+
+  <div class="container">
+    <h1>cart Items</h1>
+    <table class="table table-striped ml-5">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Price</th>
+          <th scope="col">Product quantity</th>
+          <!-- <th scope="col">Total price</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of cart ;track item.id){
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.cartQuantity }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    <div class="text-center mb-5 text-danger">
+      Total Price: {{ totalPrice() | currency }}
+    </div>
+  </div>
+</div>
